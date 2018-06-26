@@ -1,0 +1,203 @@
+<!-- Andrea J. Chiappetta 11/2/2017 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creating Shapes in CSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+	
+<style>
+	body {
+		margin: 0;
+		font-family: 'Alegraya Sans', sans-serif;
+		box-sizing: border-box;
+	}
+	h1 {
+		text-align: center;
+		margin-bottom: 2rem;
+		font-size: 2.25rem;
+	}
+	p {
+		
+		line-height: 1.5;
+		font-weight: 300;
+	}
+	#container {
+		max-width: 960px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.boxes {
+		display: flex;
+		justify-content: space-around;
+		margin-bottom: 50px;
+		
+	}
+	.boxes div {
+		width: 150px;
+		height: 150px;
+		border-top: 30px solid purple;
+		border-right: 30px solid paleturquoise;
+		border-bottom: 30px solid  thistle; 
+		border-left: 30px solid DarkTurquoise;
+		box-sizing: border-box;
+	}
+	.boxes div:nth-child(2) {
+		width: 0;
+		height: 0;
+		border-width: 75px;
+	}
+	.boxes div:nth-child(3) {
+		width: 0;
+		height: 0;
+		border-width: 75px;
+		border-right: 75px solid transparent;
+		border-left: 75px solid transparent;
+	}
+	.boxes div:nth-child(4) {
+		width: 0;
+		height: 0;
+		border-width: 75px;
+		border-top: 75px solid transparent;
+		border-bottom: 75px solid transparent;
+	}
+	.triangles {
+		display: flex;
+		justify-content: space-around;
+		margin-bottom: 50px;
+	}
+	.triangles div {
+		width: 0;
+		height: 0;
+		margin-right: 30px;
+		/*outline: 1px solid darkcyan;*/
+		
+	}
+	.outlined div {
+		outline: 1px solid darkcyan;
+	}
+	.triangles div:nth-child(1) {
+	
+		border-top: 75px solid transparent;
+		border-left: 75px solid darkturquoise;
+		border-bottom: 75px solid transparent;
+	}	
+	
+	.triangles div:nth-child(2) {
+		border-top: 75px solid transparent;
+		border-right: 75px solid paleturquoise;
+		border-bottom: 75px solid transparent;
+	}
+		
+	.triangles div:nth-child(3) {
+		
+		border-top: 75px solid purple;
+		border-left: 75px solid transparent;
+		border-right: 75px solid transparent;
+	}
+	.triangles div:nth-child(4) {
+		
+		border-bottom: 75px solid thistle;
+		border-left: 75px solid transparent;
+		border-right: 75px solid transparent;
+	}
+ 
+	.hexagons {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 30px;
+	}
+	.hexagons div {
+		position: relative;
+		left: 40px;
+		width: 150px;
+		height: 56px;
+		background: #72fde6;
+	}
+	.hexagons div:before {
+		content: "";
+		position: absolute;
+		left: -25px;
+		/*bottom: 0; */
+		height: 0
+		width: 0;
+		border-top: 28px solid transparent;
+		border-bottom: 28px solid transparent;
+		border-right: 25px solid #72fde6;
+	}
+	.hexagons div:after {
+		content: "";
+		position: absolute;
+		right: -25px;
+		/*bottom: 0; */
+		height: 0
+		width: 0;
+		border-top: 28px solid transparent;
+		border-bottom: 28px solid transparent;
+		border-left: 25px solid #72fde6;
+	}
+	div:last-child {
+		display: flex;
+	}
+	.reverse-arrow {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 30px;
+	}
+	.reverse-arrow div {
+		
+		width: 0;
+		height: 0;
+		border-top: 20px solid transparent;
+		border-bottom: 60px solid purple;
+		border-left: 20px solid purple;
+		border-right: 20px solid purple;
+	}
+	
+</style>
+</head>
+<body>
+	
+	<div id="container">
+		<h1>Creating Triangles in CSS</h1>
+		<div class="boxes">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="triangles outlined">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="triangles">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="hexagons">
+			<div></div>
+		</div>
+		<div class="reverse-arrow">
+			<div></div>
+		</div>
+		<div>
+			<img src="MiteredCorner.jpg" title="Mitered Corner" alt="mitered corner" width="250px" height="229px">
+			<p>
+				Do you see how we derived the triangles? Each one of the 4 is created
+				using 3 borders: 1 with color and the other 2 transparent. Take a look at the 2nd box in the 1st row. It has no height or width, but it is made up of 4 borders. Although each border is a rectangle, we don't see all of it. Using different border colors enables you to see this - if we had used the same color for all, we'd have a solid colored div. In both boxes, the corners are mitered (see the image). <br><br>	
+				
+				So that you can see how this is done, let's look at the 1st triangle.
+				It is formed by a left border, and by top and bottom borders (look at the "empty box"). The empty box is 150px x 150px. So, the left border of the triangle will be 75px. This is the thickness of the left border and determines the height of the triangle (in this case, going from left to right, as this triangle is "on its side"). The top and bottom borders will be 75px as well. Added together, we get the base of the triangle. We're just using these dimensions based on the empty box in the 1st row. I outlined the triangles in the 1st row so that you get an idea of the 3 borders involved. If you want triangles that are narrower, thicker, etc. you will adjust the pixels accordingly, once you understand the basic recipe. The empty box is just a way to understand what's going on. Use it as a reference point when you get confused. 
+			</p>
+		</div>
+	</div>
+</body>
+</html>
+			
